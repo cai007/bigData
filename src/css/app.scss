@@ -1,0 +1,219 @@
+// app global css in SCSS form
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url("~@/assets/fonts/Montserrat-Bold.otf");
+}
+@font-face {
+  font-family: Montserrat-Light;
+  src: url("~@/assets/fonts/Montserrat-Light.otf");
+}
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url("~@/assets/fonts/Montserrat-Regular.otf");
+}
+
+body {
+  font-family: "Montserrat-Light", "Montserrat-Regular", "Montserrat-Bold",
+    "Roboto", "-apple-system", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+  -webkit-touch-callout: none; /*系统默认菜单被禁用*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -khtml-user-select: none; /*早期浏览器*/
+  -moz-user-select: none; /*火狐*/
+  -ms-user-select: none; /*IE10*/
+  user-select: none;
+}
+input {
+  -webkit-user-select: auto; /*webkit浏览器*/
+}
+textarea {
+  -webkit-user-select: auto; /*webkit浏览器*/
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-white {
+  color: white;
+}
+.bg-white {
+  background: #fff;
+}
+.q-tab--active {
+  .q-tab__label {
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+.custom-select {
+  .q-list--dark,
+  .q-item--dark {
+    color: #000;
+  }
+  &.q-menu {
+    background-color: #fff;
+  }
+}
+
+// 去除autocomplete背景色
+// 之所以这样写，是因为quasar已经封装了对autofill的动画，所以需要将其animation-name进行复写
+.login-form {
+  .q-field__native:-webkit-autofill,
+  .q-field__input:-webkit-autofill {
+    -webkit-animation-name: background, color;
+    -webkit-transition-delay: 99999s;
+  }
+}
+
+// 将输入框的边框固定为1px，以防过渡抖动
+.q-field--outlined .q-field__control:after {
+  border-width: 1px;
+}
+
+.q-field--focused .q-field__control:after {
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.6) !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+.q-field .q-field__control:hover:before {
+  border-color: rgba(0, 0, 0, 0.4) !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+.q-field .q-field__control:before {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+.q-field--dark {
+  &.q-field--focused .q-field__control:after {
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+  &.q-field .q-field__control:hover:before {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+  &.q-field .q-field__control:before {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+@mixin input($height) {
+  .q-field__control {
+    height: $height;
+    font-size: 14px;
+    min-height: initial !important;
+  }
+
+  .q-field__marginal {
+    height: $height;
+    font-size: 16px;
+    min-height: initial !important;
+  }
+
+  .q-field__native {
+    height: $height;
+    font-size: 12px;
+    min-height: initial !important;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  input {
+    padding: 0;
+  }
+}
+
+.input-main-bd {
+  @include input(4rem);
+  .q-field__native {
+    font-size: 1.6rem !important;
+  }
+  .q-field__label {
+    line-height: 2rem;
+    font-size: 1.6rem !important;
+  }
+}
+
+.input-main {
+  @include input(40px);
+}
+
+.input-lg {
+  @include input(48px);
+}
+
+.input-sm {
+  @include input(32px);
+}
+
+.select-sm {
+  @include input(24px);
+  .q-field__control {
+    background-color: transparent !important;
+  }
+}
+
+// 按钮的发光效果
+.shadow-fluorescent {
+  box-shadow: 0px 0px 16px 4px $primary;
+}
+//调整所有带rule form元素提醒字体的整体样式
+.form-container {
+  .q-field--with-bottom {
+    padding-bottom: 0px;
+  }
+  .q-field__bottom {
+    padding: 5px 0px;
+  }
+  .form-label {
+    display: inline-block;
+    padding: 4px 0px;
+  }
+}
+.btn-toggle-main {
+  .q-btn-group {
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .q-btn {
+    border-radius: 0;
+    box-shadow: none;
+    height: 40px;
+    color: var(--q-color-textSub2);
+  }
+  .q-btn.text-primary {
+    background: var(--q-color-primary);
+    color: #fff !important;
+    border: 1px solid var(--q-color-primaryBorder) !important;
+  }
+  .q-btn.text-primary + .q-btn {
+    border-left-width: 0 !important;
+    border-right-width: 1px !important;
+  }
+}
+//统一表格字体大小
+.q-table tbody td,
+.q-table thead td {
+  font-size: 12px;
+}
+
+.c-table .q-table tbody td,
+.c-table .q-table thead th {
+  text-align: left;
+  font-size: 1.4rem !important;
+}
+
+.c-tree .q-checkbox__inner {
+  font-size: 4rem !important;
+}
+
+div.tooltip {
+  top: 50px;
+}
+
+.template-textarea .q-field__inner .q-field__control {
+  height: 500px !important;
+}
